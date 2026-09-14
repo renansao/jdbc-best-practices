@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Primary
@@ -26,13 +25,12 @@ public class Food2Repository implements FoodRepositoryOutPort {
     }
 
     @Override
-    public Optional<List<Food>> getOptionsOfFoodByName(String name) {
+    public List<Food> getOptionsOfFoodByName(String name) {
         String pattern = "%" + name + "%";
         System.out.println("MappedQueySpec");
-        List<Food> foodOptions = this.jdbcClient.sql(QUERY_FOOD)
+        return this.jdbcClient.sql(QUERY_FOOD)
                 .param("food", pattern)
                 .query(Food.class)
                 .list();
-        return Optional.of(foodOptions);
     }
 }

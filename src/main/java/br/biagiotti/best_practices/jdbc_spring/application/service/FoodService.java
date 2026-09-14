@@ -6,7 +6,6 @@ import br.biagiotti.best_practices.jdbc_spring.domain.port.out.FoodRepositoryOut
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FoodService implements FoodUseCase {
@@ -18,7 +17,7 @@ public class FoodService implements FoodUseCase {
     }
 
     @Override
-    public Optional<List<Food>> getOptionsOfFoodByName(String name) {
+    public List<Food> getOptionsOfFoodByName(String name) {
         return this.foodRepositoryOutPort.getOptionsOfFoodByName(name);
     }
 }
