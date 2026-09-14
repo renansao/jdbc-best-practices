@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Primary
 public class FoodRepository implements FoodRepositoryOutPort {
 
     private final JdbcClient jdbcClient;
